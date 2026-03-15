@@ -10,16 +10,19 @@
 	<title>{{ title }} | {{ site.title }}</title>
 
 	<link rel="stylesheet" href="/media/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 	<script src="/media/js/script.js" defer></script>
 </head>
-<body>
+<body class="ps-16 pe-16">
 	{% include "partials/header.njk" %}
 	
 	<main>
 		{{ content | safe }}
 	</main>
+
+	{% include "partials/back-to-top.njk" %}
 
 	{% include "partials/footer.njk" %}
 </body>
