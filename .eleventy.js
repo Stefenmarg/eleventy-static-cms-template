@@ -9,8 +9,8 @@ module.exports = function(eleventyConfig) {
   // Pass assets through without processing
   eleventyConfig.addPassthroughCopy("src/media/");
 
-  eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`);
-
+  eleventyConfig.addFilter("limit", (arr, limit) => arr.slice(0, limit));
+  
   return {
     dir: {
       input: "src",
