@@ -5,11 +5,11 @@
     "globalData": [
       { 
         "name": "url", 
-        "value": "https://stefenmarg.github.io"
+        "value": "https://eleventy-static-cms-template.vercel.app/"
       }, 
       { 
         "name" : "baseurl",
-        "value" : "/eleventy-static-cms-template" 
+        "value" : "" 
       },
       {
         "name": "decap_config_path",

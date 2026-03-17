@@ -1,15 +1,17 @@
 backend:
   name: gitea
   repo: stefenmarg/eleventy-static-cms-template
+  app_id: 06b24854-8c27-45bf-b5a3-d0cde9ae3d92
   branch: main
   api_root: https://codeberg.org/api/v1
   base_url: https://codeberg.org
   auth_endpoint: https://codeberg.org/login/oauth/authorize
+  site_domain: https://eleventy-static-cms-template.vercel.app/
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
 
-site_url: https://myusername.github.io
+site_url: https://eleventy-static-cms-template.vercel.app/
 
 collections:
   - name: "Settings"
