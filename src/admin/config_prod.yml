@@ -8,8 +8,8 @@ backend:
   auth_endpoint: https://codeberg.org/login/oauth/authorize
   site_domain: https://eleventy-static-cms-template.vercel.app/
 
-media_folder: "assets/images/uploads"
-public_folder: "/assets/images/uploads"
+media_folder: "src/media/assets"
+public_folder: "src/media"
 
 site_url: https://eleventy-static-cms-template.vercel.app/
 
