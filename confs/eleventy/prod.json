@@ -1,0 +1,27 @@
+{
+    "input": "src",
+    "output": "dev",
+
+    "globalData": [
+      { 
+        "name": "url", 
+        "value": "https://stefenmarg.github.io"
+      }, 
+      { 
+        "name" : "baseurl",
+        "value" : "/eleventy-static-cms-template" 
+      },
+      {
+        "name": "decap_config_path",
+        "value": "/admin/config_prod.yml"
+      }
+    ],
+
+    "watchList": [
+    ],
+
+    "passThrough": [
+      "src/media",
+      "src/admin/config_prod.yml"
+    ]
+}

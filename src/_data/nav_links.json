@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Our Team",
+      "href": "#team"
+    },
+    {
+      "label": "Publications",
+      "href": "#publications"
+    }
+  ]
+}

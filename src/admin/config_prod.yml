@@ -1,0 +1,71 @@
+backend:
+  name: gitea
+  repo: stefenmarg/eleventy-static-cms-template
+  branch: main
+  api_root: https://codeberg.org/api/v1
+  base_url: https://codeberg.org
+  auth_endpoint: https://codeberg.org/login/oauth/authorize
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+site_url: https://myusername.github.io
+
+collections:
+  - name: "Settings"
+    label: "Settings"
+    files:
+      - label: "Settings"
+        name: "site"
+        file: "src/_data/site_data.json"
+        fields:
+          - label: "Site settings"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Setting name" }
+              - { label: "Value", name: "value", widget: "text", default: "Setting value" }
+
+  - name: "nav_links"
+    label: "Nav Links"
+    files:
+      - label: "Nav Links"
+        name: "nav_links"
+        file: "_data/nav_links.json"
+        fields:
+          - label: "Nav Links"
+            name: "nav_links"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string", default: "Navigation Label" }
+              - { label: "URL", name: "href", widget: "string", default: "https://example.com" }
+
+  - name: "team"
+    label: "Team"
+    files:
+      - label: "Team Members"
+        name: "team"
+        file: "_data/team.json"
+        fields:
+          - label: "Team Members"
+            name: "team"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Username" }
+              - { label: "Avatar URL", name: "icon", widget: "string", default: "https://placehold.co/256x256" }
+              - { label: "Description", name: "desc", widget: "text", default: "Your description here" }
+
+  - name: "projects"
+    label: "Projects"
+    files:
+      - label: "Projects"
+        name: "projects"
+        file: "_data/projects.json"
+        fields:
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "New project" }
+              - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
+              - { label: "Link URL", name: "href", widget: "string", default: "https://example.com" }

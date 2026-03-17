@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "src/media/assets"
+public_folder: "src/media"
+
+collections:
+  - name: "Site settings"
+    label: "site"
+    files:
+      - label: "Site settings"
+        name: "site"
+        file: "src/_data/site_data.json"
+        fields:
+          - label: "Site settings"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Setting name" }
+              - { label: "Value", name: "value", widget: "text", default: "Setting value" }
+
+  - name: "nav_links"
+    label: "Nav Links"
+    files:
+      - label: "Nav Links"
+        name: "nav_links"
+        file: "src/_data/nav_links.json"
+        fields:
+          - label: "Nav Links"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string", default: "Navigation Label" }
+              - { label: "URL", name: "href", widget: "string", default: "https://example.com" }
+
+  - name: "team"
+    label: "Team"
+    files:
+      - label: "Team Members"
+        name: "team"
+        file: "src/_data/team.json"
+        fields:
+          - label: "Team Members"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Username" }
+              - { label: "Avatar URL", name: "icon", widget: "string", default: "https://placehold.co/256x256" }
+              - { label: "Description", name: "desc", widget: "text", default: "Your description here" }
+
+  - name: "publications"
+    label: "Publications"
+    files:
+      - label: "Publications"
+        name: "publications"
+        file: "src/_data/publications.json"
+        fields:
+          - label: "Publications"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "New project" }
+              - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
+              - { label: "Link URL", name: "href", widget: "string", default: "https://example.com" }

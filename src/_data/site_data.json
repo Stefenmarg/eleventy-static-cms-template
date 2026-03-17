@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "name": "title",
+      "value": "My site"
+    },
+    {
+      "name": "description",
+      "value": "My awesome Eleventy site"
+    }
+  ]
+}

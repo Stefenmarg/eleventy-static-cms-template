@@ -3,20 +3,39 @@ addWatchTarget: https://www.11ty.dev/docs/watch-serve/
 addPassthroughCopy: https://www.11ty.dev/docs/copy/
 */
 
+require('dotenv').config();
+
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addWatchTarget("./src/_data/application.db/");
+	const build_type = process.env.BUILD || 'prod';
+	const config = require(`./confs/eleventy/${build_type}.json`);
 
-  // Pass assets through without processing
-  eleventyConfig.addPassthroughCopy("src/media/");
+	// Setting up global variables for 11ty for use in templates
+	if (config.globalData) {
+		for (const data of config.globalData) {
+			eleventyConfig.addGlobalData(data["name"], data["value"]);
+		}
+	}
 
-  eleventyConfig.addFilter("limit", (arr, limit) => arr.slice(0, limit));
-  
-  return {
-    dir: {
-      input: "src",
-      output: "_site",
-      includes: "_includes",
-      data: "_data"
+	// Setting up pass through files to be sent to the build directory
+	if (config.passThrough) {
+        for (const dir of config.passThrough) {
+            eleventyConfig.addPassthroughCopy(dir);
+        }
     }
-  };
+
+	// Setting up watching files to reload after every modification
+	if (config.watchList) {
+        for (const path of config.watchList) {
+            eleventyConfig.addWatchTarget(path);
+        }
+    }
+
+	eleventyConfig.addFilter("limit", (arr, limit) => arr.slice(0, limit));
+	
+	return {
+        dir: {
+            input: config["input"],
+            output: config["output"],
+        },
+	};
 };

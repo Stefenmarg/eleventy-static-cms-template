@@ -1,2 +1,1 @@
-# kkokkinos-static-website
-
+# eleventy-static-cms-website
