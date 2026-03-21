@@ -24,7 +24,7 @@
     ],
 
     "passThrough": [
-      "src/assets",
+      "src/media",
       "src/admin/config_dev.yml"
     ]
 }

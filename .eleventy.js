@@ -5,6 +5,9 @@ addPassthroughCopy: https://www.11ty.dev/docs/copy/
 
 require('dotenv').config();
 
+const path = require("path");
+const fs = require("fs");
+
 module.exports = function(eleventyConfig) {
 	const build_type = process.env.BUILD || 'prod';
 	const config = require(`./confs/eleventy/${build_type}.json`);
@@ -30,8 +33,27 @@ module.exports = function(eleventyConfig) {
         }
     }
 
-	eleventyConfig.addFilter("limit", (arr, limit) => arr.slice(0, limit));
-	
+	eleventyConfig.addFilter("limit", (array, limit) => {
+		if (!array) return [];
+		return array.slice(0, limit);
+	});
+
+	const postDirs = fs.readdirSync("src/posts", { withFileTypes: true })
+		.filter(d => d.isDirectory())
+		.map(d => d.name);
+
+	postDirs.forEach(dir => {
+		eleventyConfig.addCollection(dir, (collectionApi) => {
+			return collectionApi.getFilteredByGlob(`src/posts/${dir}/*.md`)
+			.sort((a, b) => b.data.date - a.data.date);
+		});
+	});
+
+
+	eleventyConfig.addFilter("simplifyDate", (date) => {
+		return date.toLocaleString("en-uk");
+	});
+
 	return {
         dir: {
             input: config["input"],

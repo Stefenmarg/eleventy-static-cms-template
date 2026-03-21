@@ -17,26 +17,35 @@ collections:
   - name: "Settings"
     label: "Settings"
     files:
-      - label: "Settings"
-        name: "site"
-        file: "src/_data/site_data.json"
+      - label: "Site settings"
+        name: "site_items"
+        file: "src/_data/settings.json"
         fields:
-          - label: "Site settings"
+          - label: "Items"
             name: "items"
             widget: "list"
             fields:
               - { label: "Name", name: "name", widget: "string", default: "Setting name" }
               - { label: "Value", name: "value", widget: "text", default: "Setting value" }
 
-  - name: "nav_links"
-    label: "Nav Links"
-    files:
-      - label: "Nav Links"
-        name: "nav_links"
-        file: "_data/nav_links.json"
+      - label: "Site contact"
+        name: "contact_items"
+        file: "src/_data/contact.json"
+        fields:
+          - label: "Contact Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Contact Option", name: "name", widget: "string", default: "Contact name" }
+              - { label: "FA Icon Class", name: "fa_icon", widget: "string", default: "fa-solid fa-question" }
+              - { label: "Contact Value", name: "value", widget: "text", default: "Contact value" }
+
+      - label: "Site Navigation"
+        name: "navigation_items"
+        file: "src/_data/header.json"
         fields:
           - label: "Nav Links"
-            name: "nav_links"
+            name: "items"
             widget: "list"
             fields:
               - { label: "Label", name: "label", widget: "string", default: "Navigation Label" }
@@ -47,27 +56,39 @@ collections:
     files:
       - label: "Team Members"
         name: "team"
-        file: "_data/team.json"
+        file: "src/_data/team.json"
         fields:
           - label: "Team Members"
-            name: "team"
+            name: "items"
             widget: "list"
             fields:
               - { label: "Name", name: "name", widget: "string", default: "Username" }
               - { label: "Avatar URL", name: "icon", widget: "string", default: "https://placehold.co/256x256" }
               - { label: "Description", name: "desc", widget: "text", default: "Your description here" }
-
-  - name: "projects"
+  
+  - name: "Projects"
     label: "Projects"
-    files:
-      - label: "Projects"
-        name: "projects"
-        file: "_data/projects.json"
-        fields:
-          - label: "Projects"
-            name: "projects"
-            widget: "list"
-            fields:
-              - { label: "Name", name: "name", widget: "string", default: "New project" }
-              - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
-              - { label: "Link URL", name: "href", widget: "string", default: "https://example.com" }
+    folder: "src/posts/projects"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{name}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", default: "New project" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Internal Tags", name: "tags", widget: "list", default: "project" }
+      - { label: "Category", name: "tag", widget: "select", options: ["Design", "Dev", "Research", "Marketing", "Other"], default: "Dev" }
+      - { label: "Status", name: "status", widget: "select", options: ["In progress", "Completed"], default: "In progress" }
+      - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
+      - { label: "Body", name: "body", widget: "markdown" }
+    
+  - name: "Publications"
+    label: "Publications"
+    folder: "src/posts/publications"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{name}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string", default: "New publication" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Type", name: "tag", widget: "select", options: ["Journal", "Conference", "Preprint", "Report"], default: "Journal" }
+      - { label: "Description", name: "desc", widget: "text", default: "Your description here." }
+      - { label: "URL", name: "href", widget: "string", default: "https://" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
